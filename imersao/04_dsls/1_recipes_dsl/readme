@@ -1,0 +1,16 @@
+# Resultado desejado:
+
+receita "Bola de Fubá" do
+  
+  ingrediente "Farinha", "1 kilo"
+  ingrediente "Açúcar", "200 gramas"
+  ingrediente "Ovos", "2 unidades"
+  
+  preparo     "Misture todos ingrediantes"
+  preparo     "Leve ao forno"
+  preparo     "Sirva"
+  
+  tempo       "2 horas"
+  
+  porcoes     3
+end

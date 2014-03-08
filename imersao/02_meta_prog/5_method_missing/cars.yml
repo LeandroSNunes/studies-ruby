@@ -1,0 +1,21 @@
+-
+  manufacturer: "Fiat"
+  model: "Pálio"
+  year: 2010
+  price: 26000
+-
+  manufacturer: "Chevrolet"
+  model: "Celta"
+  year: 2003
+  price: 14000
+- 
+  manufacturer: "Fiat"
+  model: "Uno"
+  year: 2008
+  price: 16000  
+-
+  manufacturer: "Ford"
+  model: "KA"
+  year: 2008
+  price: 16000
+  

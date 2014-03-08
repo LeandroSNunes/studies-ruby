@@ -1,0 +1,311 @@
+Refatorando Hotel
+
+Devemos começar por onde cheira mal. O método invoice exige comentários e possui 30 linhas.
+
+============================================================
+1º Remover o cálculo da quantia para outro método
+
+class Guest
+...
+private
+  def invoice_amount
+    case @hosting.room.type
+    when Room::SIMPLE
+      amount = @hosting.days * 99
+    when Room::DELUXE
+      amount = @hosting.days * 120
+    when Room::MASTER
+      amount = @hosting.days * 200
+    end
+  end
+end
+
+
+============================================================
+2º Método invoice_amount só usa valores de hosting, então ele deveria estar em Hosting.
+
+class Hosting
+  def amount
+    case room.type
+    when Room::SIMPLE
+      amount = days * 99
+    when Room::DELUXE
+      amount = days * 120
+    when Room::MASTER
+      amount = days * 200
+    end
+  end
+end
+
+E sempre deve ter testes (hosting_test.rb):
+
+describe Hosting do
+  before do
+    @room    = Room.new("Room 35", Room::MASTER)
+    @hosting = Hosting.new(@room, 5)
+  end
+
+  it "should have the room assigned" do
+    assert_equal @hosting.room, @room
+  end
+
+  it "should know how many days the hosting will last" do
+    assert_equal 5, @hosting.days
+  end
+
+  describe "amount calculation" do
+    it "should calculate amount based on room type and days" do
+      assert_equal @hosting.amount, 1000
+    end
+
+    it "should return 99 for 1 day in SIMPLE room" do
+      room    = Room.new("Room 1", Room::SIMPLE)
+      hosting = Hosting.new(room, 1)
+      assert_equal hosting.amount, 99
+    end
+
+    it "should return 120 for 1 day in DELUXE room" do
+      room    = Room.new("Room 2", Room::DELUXE)
+      hosting = Hosting.new(room, 1)
+      assert_equal hosting.amount, 120
+    end
+
+    it "should return 200 for 1 day in MASTER room" do
+      room    = Room.new("Room 3", Room::MASTER)
+      hosting = Hosting.new(room, 1)
+      assert_equal hosting.amount, 200
+    end
+  end
+end
+
+============================================================
+3º Mover discount_points para outro método
+
+class Guest
+
+  ...
+
+  def invoice
+    #invoice header
+    result = "Hospedagem para: #{@name}\n"
+
+    # finish invoice
+    result += "Quarto escolhido: #{@hosting.room.name}\n"
+    result += "Valor total: #{@hosting.amount.to_s}\n"
+    result += "----------------------------\n"
+    result += "Você ganhou #{discount_points} ponto(s) de disconto.\n"
+    result
+  end
+
+private
+  def discount_points
+    points = 1
+    if @hosting.room.type == Room::MASTER && @hosting.days > 2
+      points += @hosting.days
+    end
+  end
+end
+
+============================================================
+4º Mas se olharmos discount_points ele só utiliza dados de hosting, então deveria estar lá dentro.
+
+class Hosting
+  ...
+
+  def discount_points
+    points  = 1
+    points += days  if room.type == Room::MASTER && days > 2
+    points
+  end
+end
+
+Testes
+
+describe "discount points calculation" do
+  it "should have 1 point" do
+    rooms   = [ Room.new("Room 1", Room::SIMPLE),
+                Room.new("Room 2", Room::MASTER),
+                Room.new("Room 2", Room::DELUXE) ]
+
+    rooms.each do |room|
+      hosting = Hosting.new(room, 1)
+      assert_equal 1, hosting.discount_points
+    end
+  end
+
+  describe "when days are bigger than 2" do
+    it "should have 1 point + another one for each day in MASTER suite" do
+      room    = Room.new("Room 1", Room::MASTER)
+      hosting = Hosting.new(room, 3)
+      assert_equal 4, hosting.discount_points
+    end
+  end
+end
+
+============================================================
+5º cálculo de valor em hosting é baseado no quarto. Uma evidência que ele deveria estar em Room é o príncipio de Demetrius.
+
+class Hosting
+  def amount
+    room.amount_for days
+  end
+end
+
+class Room
+  ...
+
+  def amount_for(days)
+    case type
+      when SIMPLE; days * 99
+      when DELUXE; days * 120
+      when MASTER; days * 200
+    end
+  end
+end
+
+Testes (remover testes de Hosting e passar para Room)
+
+require "test_helper"
+
+describe Room do
+  before do
+    @room = Room.new("Room 35", Room::MASTER)
+  end
+
+  it "should have name" do
+    assert_equal "Room 35", @room.name
+  end
+
+  it "should have type" do
+    assert_equal @room.type, Room::MASTER
+  end
+
+  describe "when calculate amount for days" do
+    it "should calculate amount based on room type and days" do
+      assert_equal @room.amount_for(5), 1000
+    end
+
+    it "should return 99 for 1 day in SIMPLE room" do
+      assert_equal 99, Room.new("1", Room::SIMPLE).amount_for(1)
+    end
+
+    it "should return 120 for 1 day in DELUXE room" do
+      assert_equal 120, Room.new("2", Room::DELUXE).amount_for(1)
+    end
+
+    it "should return 200 for 1 day in MASTER room" do
+      assert_equal 200, Room.new("3", Room::MASTER).amount_for(1)
+    end
+  end
+end
+
+============================================================
+6º O mesmo vale para o cálculo de pontos de desconto.
+
+class Room
+
+  ...
+
+  def discount_points(days)
+    points  = 1
+    points += days  if type == MASTER && days > 2
+    points
+  end
+end
+
+Teste
+
+describe "discount points calculation" do
+  it "should have 1 point" do
+    rooms   = [ Room.new("Room 1", Room::SIMPLE),
+                Room.new("Room 2", Room::MASTER),
+                Room.new("Room 2", Room::DELUXE) ]
+
+    rooms.each { |room| assert_equal 1, room.discount_points(1) }
+  end
+
+  describe "when days are bigger than 2" do
+    it "should have 1 point + another one for each day in MASTER suite" do
+      room    = Room.new("Room 1", Room::MASTER)
+      assert_equal 4, room.discount_points(3)
+    end
+  end
+end
+
+============================================================
+7º Quebrando lógica condicional em polimorfismo
+
+Agrupar tudo na pasta app e criar uma pasta chamada type com as classes Master, Simple e Deluxe com o seguinte código:
+
+module Type
+  class Deluxe
+    def amount(days)
+      days * 200
+    end
+
+    def discount_points(days)
+      1
+    end
+  end
+end
+
+module Type
+  class Master
+    def amount(days)
+      days * 200
+    end
+
+    def discount_points(days)
+      (days > 2) ? 1 + days : 1
+    end
+  end
+end
+
+module Type
+  class Simple
+    def amount(days)
+      days * 99
+    end
+
+    def discount_points(days)
+      1
+    end
+  end
+end
+
+Ajustes no Room
+
+class Room
+  def initialize(name, type)
+    @name, @type = name, type
+  end
+
+  def amount(days)
+    type.amount(days)
+  end
+
+  def discount_points(days)
+    type.discount_points(days)
+  end
+end
+
+Ajustar os testes para aceitar o Type.
+
+============================================================
+8º Alterar os métodos para o delagate do Ruby
+
+require 'forwardable'
+
+class Room
+  extend Forwardable
+
+  attr_reader :name
+  attr_accessor :type
+
+  def initialize(name, type)
+    @name, @type = name, type
+  end
+
+  def_delegators :type, :amount
+  def_delegators :type, :discount_points
+end
