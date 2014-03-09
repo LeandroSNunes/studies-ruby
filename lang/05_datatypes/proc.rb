@@ -29,19 +29,20 @@
 
 
 class Tabs
-	@@config = {}
-	
-	def set_config(name, options={})
-		@@config[name] = options
-	end
-	
-	def self.config
-		@@config
-	end
-	
-	def method_missing(item,args={},&block)
-		@@config[item] = args	
-	end
+  @@config = {}
+
+  def set_config(name, options={})
+    @@config[name] = options
+  end
+
+  def self.config
+    @@config
+  end
+
+  def method_missing(item,args={},&block)
+    @@config[item] = args	
+  end
+
 end
 
 #class Nav < Tabs
@@ -54,19 +55,24 @@ end
 #end
 
 def config(&b)
-	b.call( Tabs.new )
+  b.call
 end
 
 
 config do |item|
-		item.dashboards title:"Area de trabalho", path: :admin_dashboard_path, dropdown: {
-			user: {title:"Usuários", path: :admin_users_path}
-			}
-		#item :users, title:"Usuários", path: :admin_users_path
+  item.dashboards title:"Area de trabalho", path: :admin_dashboard_path, dropdown: {
+    user: {title:"Usuários", path: :admin_users_path}
+  }
+  #item :users, title:"Usuários", path: :admin_users_path
 end
 
 p Tabs.config
 
 
+config do |teste|
 
+end
 
+a = --> || do
+
+end

@@ -1,0 +1,5 @@
+# Variavel local
+
+
+nome = "Leandro"
+

@@ -4,8 +4,6 @@ class Car
 	def wheel=(num)
 		@@wheel = num
 	end
-
-	p defined? @@wheel
 end
 
 class Fiat < Car

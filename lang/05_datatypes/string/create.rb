@@ -20,3 +20,4 @@ puts str
 
 puts "Leandro Nunes".class.ancestors
 # [String, Comparable, Object, Kernel, BasicObject]
+#
