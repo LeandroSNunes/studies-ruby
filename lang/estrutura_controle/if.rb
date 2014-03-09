@@ -23,7 +23,6 @@ end
 
 if true then puts "test 4 inline" end
 
-
 puts "test 5 inline end line" if true
 
 

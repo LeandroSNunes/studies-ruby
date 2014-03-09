@@ -4,6 +4,9 @@ puts str
 str = "Leandro Nunes"
 puts str
 
+str = 'Leandro Nunes'
+puts str
+
 str = %{Leandro Nunes}
 puts str
 

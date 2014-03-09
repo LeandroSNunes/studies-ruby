@@ -1,4 +1,4 @@
-#expansão de variáveis
+# Interpolação de variáveis
 
 work = "estudando"
 puts "O que voce esta fazendo agora? #{work}"

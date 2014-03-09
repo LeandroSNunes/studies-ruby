@@ -1,3 +1,5 @@
+# uma forma de se escrever uma quantidade enorme de texto sem precisar de concatenação
+# permite especificar os delimitadores
 
 str = <<TEXTO
 ljsdfjs dfjsadf jsf sdf sfja fjas

@@ -23,7 +23,21 @@
   - Range
   - Proc
   - Nil
+  - String
+    - Criação 
+    - embedded
+    - Encoding
+    - Heredoc
+    - Object
+    - methods
 - Constantes
+- Estruturas de Controle
+  - if 
+  - case
+  - unless
+  - for
+  - while
+  - until
 
 
 
