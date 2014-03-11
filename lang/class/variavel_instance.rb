@@ -1,3 +1,4 @@
+# Todas variáveis de instancia criada é privada
 #Variaveis de instancia no receiver padrao
 class Person
 
@@ -26,3 +27,6 @@ pe = Person.new "Leandro"
 p  pe.class.count
 ## Na instancia do Objeto
 p pe.name
+
+
+# Exemplo de instance_variable_get e instance_variable_set 

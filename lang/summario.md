@@ -10,8 +10,6 @@
 - Variáveis
   - Convenções
   - Locais
-  - De instância
-  - De Classe
   - Globais
 - DataTypes
   - Fixnum
@@ -38,9 +36,13 @@
   - for
   - while
   - until
-
-
-
-
 - Classes
+  - Estrutura
+  - Variável de instância
+  - Variável de Classe
+  - Accesors get/set
   - Open Classes
+- Métodos
+  - Argumento com valor obrigatório
+  - Argumento com valor padrão
+  - Argumento com valor opcional
