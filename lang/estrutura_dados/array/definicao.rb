@@ -1,4 +1,5 @@
 
+Array.ancestors
 # [Array, Enumerable, Object, Kernel, BasicObject]
 
 ar = []
@@ -11,5 +12,6 @@ ar = Array.new 5, "a"
 ar = Array.new(4){|index| index ** 2}
 #array de string
 ar = %w{ a b c d }
+ar = %W{ a b c d #{1+1} } # permite a interpolacao
 #array de simbolos
 ar = %i{ a b c d }

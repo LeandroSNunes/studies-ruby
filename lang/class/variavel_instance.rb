@@ -1,5 +1,4 @@
 # Todas variáveis de instancia criada é privada
-#Variaveis de instancia no receiver padrao
 class Person
 
   def initialize(name)

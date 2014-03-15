@@ -1,3 +1,6 @@
+Fixnum.ancestors
+#=> [Fixnum, Integer, Numeric, Comparable, Object, Kernel, BasicObject]
+
 a = 70000
 puts a.class
 

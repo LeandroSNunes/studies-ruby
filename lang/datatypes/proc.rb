@@ -10,6 +10,8 @@
 
 #->closure
 
+Proc.ancestors
+#=> [Proc, Object, Kernel, BasicObject]
 
 ## NOVA SINTAXE PARA LAMBDA
 #x = -> { puts "Fazendo Lambda!" }

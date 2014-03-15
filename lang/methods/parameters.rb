@@ -4,17 +4,16 @@ end
 saysomething "Leandro"
 
 
-#def saysomething(name, last_name)
-#	puts "Hello #{name} #{last_name}" 
-#end
-#saysomething "Leandro", "Nunes"
+def saysomething(name, last_name)
+	puts "Hello #{name} #{last_name}" 
+end
+saysomething "Leandro", "Nunes"
 
 
 def saysomething(name, last_name = "Nunes")
 	puts "Hello #{name} #{last_name}"
 end
 saysomething "Leandro"
-
 
 def saysomething(*name)  
 	puts "Hello #{name.first} #{name.last}"

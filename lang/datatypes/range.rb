@@ -1,3 +1,7 @@
+
+Range.ancestors
+#=> [Range, Enumerable, Object, Kernel, BasicObject]
+
 # INCLUSIVOS
 # num  = (1..20)
 # puts num

@@ -1,6 +1,10 @@
 
 has = {}
 has = { name: "Leandro", lastname: "Nunes" }
+has = {
+  name: "Leandro",
+  lastname: "Nunes"
+}
 
 has = Hash.new
 

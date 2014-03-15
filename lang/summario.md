@@ -36,13 +36,20 @@
   - for
   - while
   - until
+- Estrutura de Dados
+  - Introdução
+  - Array
+    - Definição
+  - Hash
+- Métodos
+  - Definição
+  - Argumento com valor obrigatório
+  - Argumento com valor padrão
+  - Argumento com valor opcional
+  - O metodo to_s
 - Classes
   - Estrutura
   - Variável de instância
   - Variável de Classe
-  - Accesors get/set
+  - Accessors get/set
   - Open Classes
-- Métodos
-  - Argumento com valor obrigatório
-  - Argumento com valor padrão
-  - Argumento com valor opcional
