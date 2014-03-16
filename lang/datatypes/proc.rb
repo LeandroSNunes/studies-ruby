@@ -1,33 +1,49 @@
-#encoding: utf-8
-#todos os metodos aceitem bloco
-#Nao da pra passar mais de um bloco como argumento
 
-#4 metodos de utilizar blocos (lambda, Proc.new, proc, &block)
+=begin
+## Funcoes de alta orderm - Higher-order funcions
+
+- Todos os metodos aceitem bloco
+- Nao da pra passar mais de um bloco como argumento
+- Maneiras de utilizar blocos (lambda, Proc.new, proc, &block)
+- lambdas são conhecidas como funcoes anonimas
+- lambdas faz checkagem de parametros
+
+=end
 
 #->usando o yield
-
 #->passar blocos entre methods usando & (& chama lambda na pratica)
-
 #->closure
 
 Proc.ancestors
 #=> [Proc, Object, Kernel, BasicObject]
 
-## NOVA SINTAXE PARA LAMBDA
-#x = -> { puts "Fazendo Lambda!" }
-#x.call
-## parametros
-#x = ->l, s { puts "#{l.capitalize} is #{s}!" }
-#x.call(:ruby, :beautiful)   
+# LAMBDA definicao
+x = lanbda{ puts "Fazendo Lambda!" }
+x = -> { puts "Fazendo Lambda!" }
 
-#x = ->(l, s=:test) { puts "#{l.capitalize} is #{s}!" }
-#x.call(:ruby, :beautiful)
+# parametros
+x = ->l, s { puts "#{l.capitalize} is #{s}!" }
+x.call(:ruby, :beautiful)   
+
+x = ->(l, s=:test) { puts "#{l.capitalize} is #{s}!" }
+x.call(:ruby, :beautiful)
 
 ## formas para executar
-#x = ->(a) { puts "Hello #{a}!" }
-#x.call("world")
-#x.("world")
-#x["world"]
+x = ->(a) { puts "Hello #{a}!" }
+x.call("world")
+x.("world")
+x["world"]
+
+# Currying
+
+
+
+
+
+
+
+
+
 
 
 class Tabs

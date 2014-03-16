@@ -1,4 +1,5 @@
-
+# A chave identificadora pode ser de qualquer tipo
+#
 has = {}
 has = { name: "Leandro", lastname: "Nunes" }
 has = {

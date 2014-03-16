@@ -11,6 +11,7 @@
   - Convenções
   - Locais
   - Globais
+- Operadores
 - DataTypes
   - Fixnum
   - Bignum
@@ -20,6 +21,8 @@
   - Simbol
   - Range
   - Proc
+    - Lambda
+    - Currying
   - Nil
   - String
     - Criação 
@@ -47,7 +50,10 @@
   - Argumento com valor obrigatório
   - Argumento com valor padrão
   - Argumento com valor opcional
+  - Bloco como argumento
+    - yield
   - O metodo to_s
+  - metodos predicados
 - Classes
   - Estrutura
   - Variável de instância
