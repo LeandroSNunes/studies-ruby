@@ -6,4 +6,6 @@ hs = {
 # Values
 p hs.values
 
-# fatten
+# flatten
+p hs.flatten
+p hs.values.flatten
