@@ -1,9 +1,5 @@
 
+"".empty?
 
-nome = "Leandro Nunes"
-
-nome.upcase
-puts nome
-
-nome.upcase!
-puts.nome
+h = {a: 1, b:2, c:3}
+h.key? :b

@@ -1,4 +1,6 @@
 =begin
+-- ruby-lang.org
+-- ruby-doc.org
 
 # Introdução
 - Criada por Yukihiro Matsumoto, mais conhecido como Matz, no ano de 1995 no Japão, com o objetivo de

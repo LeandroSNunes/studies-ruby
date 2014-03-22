@@ -39,6 +39,7 @@
   - for
   - while
   - until
+  - Begin/End
 - Estrutura de Dados
   - Introdução
   - Array
@@ -56,7 +57,10 @@
   - metodos predicados
 - Classes
   - Estrutura
+  - Method Lockup
   - Variável de instância
   - Variável de Classe
   - Accessors get/set
+  - Heranca
   - Open Classes
+- Modulo
