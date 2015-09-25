@@ -18,17 +18,17 @@
 # EXEMPLO 2
 # palavras = ["Um","Dois","Tres","Quatro"]
 # numeros = [1,2,3,4]
-#  
+#
 # puts "Sem Threads...."
-# 
+#
 # palavras.each { |palavra| puts(palavra) }
 # numeros.each { |numero| puts(numero) }
-# 
+#
 # puts "Com Threads...."
-#  
+#
 # Thread.new { palavras.each { |palavra| puts(palavra + " - ") } }
 # Thread.new{ numeros.each { |numero| puts(numero) } }
-#  
+#
 # sleep(5)
 
 # EXEMPLO 3 -- com Proc
