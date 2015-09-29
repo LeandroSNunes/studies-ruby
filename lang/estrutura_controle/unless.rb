@@ -1,5 +1,4 @@
 # a menos que
-
 unless (true) then
 	puts "test 1"
 else
@@ -20,6 +19,6 @@ puts "test 5 inline end line" unles true
 
 
 unless true
-	puts "test 6 line one"  
+	puts "test 6 line one"
 	puts "test 6 line two"
 end

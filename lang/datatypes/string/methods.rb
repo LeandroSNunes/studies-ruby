@@ -9,10 +9,11 @@ puts "Bla " * 5
 ##Concatena
 puts "leandro ".concate("Nunes")
 puts "Leandro " + "Nunes"
+puts "Leandro " << "Nunes" #realoca memória
 
-##Os métodos each_* possuem equivalentes como line, char, byte e codepoint.    
-str.each_line{ |s| puts s }   
-puts "leandro Nunes".each_codepoint.to_a.inspect     
+##Os métodos each_* possuem equivalentes como line, char, byte e codepoint.
+str.each_line{ |s| puts s }
+puts "leandro Nunes".each_codepoint.to_a.inspect
 
 # Converte a primeira letra para maiuscula
 puts str.capitalize

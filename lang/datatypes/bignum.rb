@@ -1,3 +1,6 @@
+=begin
+os Bignums alocam memória, diferentemente dos Fixnums e outros tipos que são immediate values!
+=end
 
 Bignum.ancestors
 #=> [Bignum, Integer, Numeric, Comparable, Object, Kernel, BasicObject]

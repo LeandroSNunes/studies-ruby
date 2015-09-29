@@ -35,8 +35,8 @@ puts pessoas.inject(0){ |soma, pessoa| soma += pessoa.idade }
 # nome de todos
 nomes = []
 pessoas.each{ |pessoa| nomes << pessoa.nome }
-puts nomes 
-# ou 
+puts nomes
+# ou
 puts pessoas.map{ |pessoa| pessoa.nome }
 # ou
 puts pessoas.map &:nome

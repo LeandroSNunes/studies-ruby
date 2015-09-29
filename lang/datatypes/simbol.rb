@@ -9,7 +9,7 @@ Symbol.ancestors
 puts :nome.upcase
 
 # É possível fazer comparações de símbolos com expressões regulares
-  
+
 puts :leandro =~ /lea/
 
 # Imutabilidade

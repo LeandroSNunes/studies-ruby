@@ -35,7 +35,8 @@ x.("world")
 x["world"]
 
 # Currying
-
+mult = lambda {|n1,n2| n1*n2}.curry  # multi = lambda {|x| lambda {|y| x*y}}
+mult.(2).(3)
 
 
 
