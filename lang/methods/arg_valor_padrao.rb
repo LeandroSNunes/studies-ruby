@@ -24,3 +24,14 @@ class Telefone
     "Discando para: #{operadora} #{ddd} #{numero}"
   end
 end
+
+
+# Os valores padrões não necessitam de uma posição fixa mais devem estar agrupados
+def add_values(a = 1, b = 2, c)
+ a + b + c
+end
+
+# Dispara uma exception SyntaxError
+def add_values(a = 1, c, b = 2)
+ a + b + c
+end
